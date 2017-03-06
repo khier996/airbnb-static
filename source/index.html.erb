@@ -1,10 +1,136 @@
 ---
 title: Le Wagon Middleman boilerplate
 ---
+  <head>
+    <meta charset="utf-8">
+    <title>Airbnb home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Raleway:300,400,500,700">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
 
-<div class="welcome text-center padded">
-  <h1>Welcome to Middleman</h1>
-  <p class="doc">
-    <%= link_to "Read Online Documentation", "http://middlemanapp.com/" %>
-  </p>
-</div>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- Leave those next 4 lines if you care about users using IE8 -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <!-- Your banner code -->
+    <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('images/background.jpg');">
+      <div class="banner-content">
+        <h1>WELCOME HOME</h1>
+        <p>Rent unique places to stay from local hosts in 190+ countries.</p>
+        <a class="btn btn-primary btn-lg">How it works</a>
+      </div>
+    </div>
+
+    <!-- Your features code -->
+    <div class="text-center margin-big">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="feature">
+              <img src="images/globe.png" alt="globe" width="100px">
+              <h2 class="feature-heading">Discover the world</h2>
+              <p class="feature-description">The earth is your new home.</p>
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="feature">
+              <img src="images/dollar.png" alt="" width="100px">
+              <h2 class="feature-heading">Pay online</h2>
+              <p class="feature-description">No cash issues anymore.</p>
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="feature">
+              <img src="images/beer.png" alt="" width="100px">
+              <h2 class="feature-heading">Meet people</h2>
+              <p class="feature-description">Discover new culture and lifestyle.</p>
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="feature">
+              <img src="images/heart.png" alt="" width="100px">
+              <h2 class="feature-heading">Share and love</h2>
+              <p class="feature-description">Join a community you will love.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Your cards code -->
+    <div class="wrapper-grey">
+      <div class="container">
+        <div class="row">
+
+          <% [{name: "max", city: "brussels"}, {name: "anne", city: "paris"}, {name: "romain", city: "london"}].each do |card| %>
+            <div class="col-xs-12 col-sm-4">
+              <div class="card" style="background-image: url('images/card-<%=card[:city]%>.jpeg');">
+                <a class="card-link" href="#"></a>
+                <h1 class="card-city"> <%= card[:city].capitalize %> </h1>
+
+                <%= image_tag "#{card[:name]}.jpg", class: "card-avatar avatar" %>
+
+                <div class="card-description">
+                  <h1 class="description-heading"><%= card[:name].capitalize %>'s home</h1>
+                  <h3 class="description-details">Charming room with patio</h3>
+                </div>
+              </div>
+            </div>
+          <% end %>
+
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Your newsletter code -->
+
+    <div class="subscribe-form text-center">
+      <h2>Get news from us</h2>
+      <p>Leave us your mail and get news from us</p>
+      <form action="#" class="form-inline">
+        <input type="email" class="form-control" placeholder="Your email...">
+        <input type="submit" class="btn btn-primary" value="Subscribe">
+      </form>
+    </div>
+
+
+    <!-- Your map code -->
+    <div id="map" style="width: 100%; height: 500px;"></div>
+
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+
+    <script type="text/javascript">
+    var myLatlng = new google.maps.LatLng(48.8655909, 2.378983);
+
+    var myOptions = {
+      zoom: 16,
+      center: myLatlng,
+      scrollwheel: false,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      styles: [{"elementType":"geometry","stylers":[{"hue":"#ff4400"},{"saturation":-68},{"lightness":-4},{"gamma":0.72}]},{"featureType":"road","elementType":"labels.icon"},{"featureType":"landscape.man_made","elementType":"geometry","stylers":[{"hue":"#0077ff"},{"gamma":3.1}]},{"featureType":"water","stylers":[{"hue":"#00ccff"},{"gamma":0.44},{"saturation":-33}]},{"featureType":"poi.park","stylers":[{"hue":"#44ff00"},{"saturation":-23}]},{"featureType":"water","elementType":"labels.text.fill","stylers":[{"hue":"#007fff"},{"gamma":0.77},{"saturation":65},{"lightness":99}]},{"featureType":"water","elementType":"labels.text.stroke","stylers":[{"gamma":0.11},{"weight":5.6},{"saturation":99},{"hue":"#0091ff"},{"lightness":-86}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"lightness":-48},{"hue":"#ff5e00"},{"gamma":1.2},{"saturation":-23}]},{"featureType":"transit","elementType":"labels.text.stroke","stylers":[{"saturation":-64},{"hue":"#ff9100"},{"lightness":16},{"gamma":0.47},{"weight":2.7}]}] // TODO: replace [] by array from https://snazzymaps.com/
+    };
+
+    var map = new google.maps.Map(document.getElementById('map'), myOptions);
+    var marker = new google.maps.Marker({
+      position: myLatlng,
+      map: map,
+      title: "You are here!"
+    });
+    </script>
+
+
+
+
+

@@ -1,0 +1,36 @@
+/* Footer design */
+.footer {
+  background-color: #333333;
+  color: white;
+  height: 120px;
+  position: relative;
+}
+
+.footer a {
+  color: #B3B4B8;
+}
+.social-icons {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  color: #B3B4B8;
+}
+
+.social-icon {
+  font-size: 3rem;
+  margin-right: 30px;
+  transition: all 0.3s ease-in-out;
+}
+
+.social-icon:hover {
+  color: yellow;
+  cursor: pointer;
+}
+
+.footer-content {
+  margin-top: 10px;
+  position: absolute;
+  right: 30px;
+  top: 30%;
+}
+
